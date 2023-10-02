@@ -1,10 +1,14 @@
 package dev.fastcampus.springmvc.model
 
 import jakarta.persistence.Entity
+import jakarta.persistence.EntityListeners
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.MappedSuperclass
+import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 
 @Entity
@@ -13,8 +17,8 @@ class Article(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
     var title: String,
-    var body: String,
-    var authorId: Long,
+    var body: String?,
+    var authorId: Long?,
 ): BaseEntity() {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -34,7 +38,14 @@ class Article(
 }
 
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener::class)
 open class BaseEntity(
+    @CreatedDate
     var createdAt: LocalDateTime? = null,
+    @LastModifiedDate
     var updatedAt: LocalDateTime? = null,
-)
+) {
+    override fun toString(): String {
+        return "BaseEntity(createdAt=$createdAt, updatedAt=$updatedAt)"
+    }
+}
