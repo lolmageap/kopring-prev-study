@@ -16,7 +16,7 @@ class ArticleService(
     fun get(id: Long) : Article =
         articleRepository.findByIdOrNull(id) ?: throw ArticleNotFound("No article found (id: $id)")
 
-    fun getAll(title: String?) : List<Article> {
+    fun getAll(title: String? = null) : List<Article> {
         return if (title.isNullOrEmpty()) {
             articleRepository.findAll()
         } else {
