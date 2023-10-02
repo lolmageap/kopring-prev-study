@@ -15,7 +15,7 @@ import java.time.LocalDateTime
 class Article(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var id: Long = 0,
     var title: String,
     var body: String?,
     var authorId: Long?,
