@@ -8,16 +8,16 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
-private val logger = KotlinLogging.logger{}
+private val logger = KotlinLogging.logger {}
 
 @SpringBootTest
 class SpringMvcApplicationTests(
     @Autowired private val articleRepository: ArticleRepository,
 ) {
-    private val logger = KotlinLogging.logger{}
     @Test
     fun contextLoads() {
         val prev = articleRepository.count()
+
         articleRepository.save(
             Article(
                 title = "title",
