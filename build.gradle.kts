@@ -20,6 +20,8 @@ repositories {
 }
 
 dependencies {
+    implementation("ch.qos.logback:logback-classic:1.4.11")
+    implementation("io.github.microutils:kotlin-logging:3.0.5")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
